@@ -1,0 +1,46 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is the import process
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(plotly)
+```
+
+
+```{r}
+library(readr)
+simulated_patient_data <- read_csv("https://github.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/raw/master/Examples/data/simulated_patient_data.csv")
+
+simulated_patient_data
+```
+
+
+This is the data Viz
+
+```{r}
+simulated_patient_data %>%
+ filter(birthdate >= "1965-02-17" & birthdate <= "2020-11-09") %>%
+ 
+    filter(marital %in% "S" | is.na(marital)) %>%
+ ggplot() +
+ aes(x = race, fill = gender) +
+ geom_bar() +
+ scale_fill_hue() +
+ theme_minimal()
+
+```
+
+This is an interactive data Viz
+
+```{r}
+
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = "dodge")
+ggplotly(p)
+
+```
+
