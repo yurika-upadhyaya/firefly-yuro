@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "Firefly R Notebook"
 output: html_notebook
 ---
 
@@ -23,7 +23,7 @@ This is the data Viz
 
 ```{r}
 simulated_patient_data %>%
- filter(birthdate >= "1965-02-17" & birthdate <= "2020-11-09") %>%
+ filter(birthdate >= "1975-02-17" & birthdate <= "2020-11-09") %>%
  
     filter(marital %in% "S" | is.na(marital)) %>%
  ggplot() +
@@ -37,7 +37,7 @@ simulated_patient_data %>%
 This is an interactive data Viz
 
 ```{r}
-
+# This is my comment
 p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
             geom_bar(position = "dodge")
 ggplotly(p)
